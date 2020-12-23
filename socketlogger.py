@@ -64,7 +64,7 @@ class SocketLogger(weewx.drivers.AbstractDevice):
             self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.socket.settimeout(self.timeout)
             self.socket.connect( (self.host_ip, self.host_port) )
-        except (socket.error, socket.timeout, socket.herror), ex:
+        except (socket.error, socket.timeout, socket.herror) AS ex:
             logerror("Socket error while opening port %d to ethernet host %s." % (self.host_port, self.host_ip))
             # Reraise as a weewx I/O error:
             raise weewx.WeeWxIOError(ex)
@@ -106,7 +106,7 @@ class SocketLogger(weewx.drivers.AbstractDevice):
             try:
                 _line = self.port.readline(4096)
                 #loginf(_line)
-            except (socket.timeout, socket.error), ex:
+            except (socket.timeout, socket.error) AS ex:
                 raise weewx.WeeWxIOError(ex)
             if _line == None:
                 break
