@@ -139,6 +139,6 @@ class SocketLogger(weewx.drivers.AbstractDevice):
         _packet['windGustDir'] = float( data["windDir"] )
         _packet['radiation'] = float( data["radiation"] )
         _packet['UV'] = float( data["UV"] )
-        _packet['txBatteryStatus'] = float( data["txBatteryStatus"] )
+        _packet['txBatteryStatus'] = float( '0'+data["txBatteryStatus"] )
         #loginf(_packet)
         return _packet
